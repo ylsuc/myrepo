@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.base.Preconditions;
 import com.yunkouan.biz.operator.service.OperatorService;
@@ -23,12 +24,12 @@ public class OperatorController {
 	 * @return
 	 */
 	@RequestMapping(value="/operatorView")
-	public String operatorView(){
-		System.out.println("view");
-		System.out.println("view2");
-		System.out.println("home change...");
-		System.out.println("company change...");
-		return "/system/operator/operator";
+	public ModelAndView operatorView(){
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/system/operator/operator");
+		List<OperatorVO> operators = operatorService.getOperatorVOs();
+		mav.addObject("operators", operators);
+		return mav;
 	}
 	
 	/**
@@ -37,20 +38,20 @@ public class OperatorController {
 	 * @return
 	 */
 	@RequestMapping(value="/signIn")
+	@ResponseBody
 	public String signIn(OperatorVO operator) {
 		String loginName = operator.getLoginName();
 		String password = operator.getPassword();
 		
-		OperatorVO operatornew = operatorService.getOperator(loginName);
-		if(operatornew != null) {
-			String pwd = operatornew.getPassword();
+		OperatorVO operatorTemp = operatorService.getOperator(loginName);
+		if(operatorTemp != null) {
+			String pwd = operatorTemp.getPassword();
 			if(password.equalsIgnoreCase(pwd)) {
-				return "/system/operator/operator";
+				return "/operator/operatorView";
 			}
 		}
 		
 		return "redirect:index.jsp";
-//		return "/system/operator/operator";
 	}
 	
 	@RequestMapping(value="/listOperators")

@@ -14,6 +14,22 @@ public class OperatorVO {
 	private String description;
 	// 创建时间
 	private Date createTime;
+	// 是否删除(1:已删除;0:未删除)
+	private Integer deleted ;
+	// 状态(1:启用;0:禁用)
+	private Integer status;
+	public Integer getDeleted() {
+		return deleted;
+	}
+	public void setDeleted(Integer deleted) {
+		this.deleted = deleted;
+	}
+	public Integer getStatus() {
+		return status;
+	}
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
 	public Integer getId() {
 		return id;
 	}

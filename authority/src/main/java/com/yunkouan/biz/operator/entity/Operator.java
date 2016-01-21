@@ -56,7 +56,7 @@ public class Operator {
 	public void setNickname(String nickName) {
 		this.nickname = nickName;
 	}
-	@Column(name="logingName")
+	@Column(name="loginName")
 	public String getLoginName() {
 		return loginName;
 	}

@@ -1,7 +1,6 @@
 /**
  * index.js
  */
-
 $(document).ready(function(){
 	// 登录
 	$("#btnSubmit").click(function(){
@@ -12,8 +11,9 @@ $(document).ready(function(){
 			url: ctx + "/operator/signIn",
 			data: "loginName=" + loginName + "&password=" + password,
 			success: function(data){
+				console.log(data);
 				if(data != null) {
-					window.location.href= ctx + "/operator/operatorView";
+					window.location.href= ctx + data;
 				}
 			},
 			error: function(err) {
