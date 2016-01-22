@@ -1,4 +1,4 @@
-package com.yunkouan.common;
+package com.yunkouan.common.util;
 
 import java.util.Collection;
 import java.util.List;

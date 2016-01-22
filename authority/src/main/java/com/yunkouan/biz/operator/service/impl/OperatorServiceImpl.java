@@ -12,7 +12,7 @@ import com.yunkouan.biz.operator.dao.OperatorDao;
 import com.yunkouan.biz.operator.entity.Operator;
 import com.yunkouan.biz.operator.service.OperatorService;
 import com.yunkouan.biz.operator.vo.OperatorVO;
-import com.yunkouan.common.BeanMapper;
+import com.yunkouan.common.util.BeanMapper;
 
 @Transactional
 @Service(value="operatorService")
